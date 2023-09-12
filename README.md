@@ -7,18 +7,20 @@ Python 3.7
 
 Rust
 # Project structure
+```
 -get_layout
--data
--action : Used to store sports cloth obj sequences
--raw_model ： Used to store the initial state of the fabric (2D and 3D patterns)
--result
--graph ： Data used to store graphs in STP problems
--layout ： Used to store layout results
--steiner_tree-master ： STP algorithm module
--weight ：Used to store weights
-get_edge_weight.py ：Calculate weight
-utils.py ： Calculate layout
-visual.py : Layout visualization
+	-data
+		-action : Used to store sports cloth obj sequences
+		-raw_model ： Used to store the initial state of the fabric (2D and 3D patterns)
+	-result
+		-graph ： Data used to store graphs in STP problems
+		-layout ： Used to store layout results
+	-steiner_tree-master ： STP algorithm module
+	-weight ：Used to store weights
+	get_edge_weight.py ：Calculate weight
+	utils.py ： Calculate layout
+	visual.py : Layout visualization
+```
 # How to build
 Mainly required to create STP solver Specific method: 
 Run the command line in the path where steiner_tree-master is located:
