@@ -234,8 +234,7 @@ def path_3Dto2D(path_3D,
                 model_path_3D = r"./data/raw_model/3D.obj",
                 model_path_2D = r"./data/raw_model/2D.obj",
                 ):
-    # 路径为[[s,s1],[s1,s2]]形式
-    # 从3D路径变为2D路径
+   
     corr3D_2D = corr3Dto2D(model_path_3D,
                            model_path_2D)
     path = np.loadtxt(path_3D, dtype=int) - 1
@@ -305,7 +304,7 @@ def evaluate(model_path_3D = r"./data/raw_model/3D.obj",
 
 
     degree = {}
-    # 入度加出度超过2的也为端点
+   
     for p in path_2D:
         for i in p:
             if degree.get(i) == None:
@@ -317,7 +316,7 @@ def evaluate(model_path_3D = r"./data/raw_model/3D.obj",
 
             interest_point_set.append(key)
 
-    # 2D 缝合线上的点也为端点
+
     fh,tmp = maya_read_vertex()
     for key in degree.keys():
         if key in fh :
@@ -385,16 +384,16 @@ def evaluate(model_path_3D = r"./data/raw_model/3D.obj",
             if ss > 100000:
                 break
             tck, u = splprep([x, y], s=ss, per=False)
-            # 使用splev()函数根据得到的参数，分别计算出拟合曲线上100个点的横纵坐标
+           
 
             u_new = np.linspace(u.min(), u.max(), 1000)
             dx, dy = splev(u_new, tck, der=1)
             d2x, d2y = splev(u_new, tck, der=2)
 
-            # 计算曲线上每个点的速度和加速度
+          
             v = np.sqrt(dx ** 2 + dy ** 2)
 
-            # 计算曲线上每个点的曲率
+          
             kappa = (dx * d2y - dy * d2x) / (v ** 3)
             if np.max(abs(kappa)) > 2 / length:
                 ss *= 2
